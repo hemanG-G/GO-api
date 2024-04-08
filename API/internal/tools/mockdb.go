@@ -4,9 +4,14 @@ import (
 	"time"
 )
 
+// mock implementation of a database
 type mockDB struct{}
 
-var mockLoginDetails = map[string]LoginDetails{
+// we define methods outside structs -> called reciever functions
+// func (s *AssociatedStruct) MethodName(params.) ...
+
+var mockLoginDetails = map[string]LoginDetails{ // mock implementation of a database
+
 	"alex": {
 		AuthToken: "password",
 		Username:  "hemang",
@@ -21,7 +26,8 @@ var mockLoginDetails = map[string]LoginDetails{
 	},
 }
 
-var mockCoinDetails = map[string]CoinDetails{
+var mockCoinDetails = map[string]CoinDetails{ // mock implementation of a database
+
 	"alex": {
 		Coins:    100,
 		Username: "hemang",
@@ -36,7 +42,8 @@ var mockCoinDetails = map[string]CoinDetails{
 	},
 }
 
-func (d *mockDB) GetUserLoginDetails(username string) *LoginDetails {
+// func (s *AssociatedStruct) MethodName(params.) ...
+func (d *mockDB) GetUserLoginDetails(username string) *LoginDetails { //mockDB represents the instance of the DATABASE we want to access
 	// Simulate DB call by adding delay
 	time.Sleep(time.Second * 1)
 
@@ -49,7 +56,7 @@ func (d *mockDB) GetUserLoginDetails(username string) *LoginDetails {
 	return &clientData
 }
 
-func (d *mockDB) GetUserCoins(username string) *CoinDetails {
+func (d *mockDB) GetUserCoins(username string) *CoinDetails { //mockDB represents the instance of the DATABASE we want to access
 	// Simulate DB call
 	time.Sleep(time.Second * 1)
 

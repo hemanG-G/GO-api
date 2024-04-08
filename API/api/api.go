@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-// param
+// Incoming Username
 type CoinBalanceParam struct {
 	Username string
 }
@@ -28,6 +28,7 @@ type Error struct {
 	Message string
 }
 
+// for printing error
 func WriteError(w http.ResponseWriter, message string, code int) {
 
 	resp := Error{
@@ -42,11 +43,11 @@ func WriteError(w http.ResponseWriter, message string, code int) {
 
 }
 
-var (
-	RequestErrorHandler = func(w http.ResponseWriter, err error) {
+var ( // types of error handlers
+	RequestErrorHandler = func(w http.ResponseWriter, err error) { // show error details
 		WriteError(w, err.Error(), http.StatusBadRequest)
 	}
-	InternalErrorHandler = func(w http.ResponseWriter) {
+	InternalErrorHandler = func(w http.ResponseWriter) { // dont show error details
 		WriteError(w, "An Unexpected Error Occured ", http.StatusInternalServerError)
 	}
 )

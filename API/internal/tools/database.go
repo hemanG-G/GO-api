@@ -15,16 +15,18 @@ type CoinDetails struct {
 	Username string
 }
 
-type DatabaseInterface interface {
+type DatabaseInterface interface { // interacting with the DB
 	GetUserLoginDetails(username string) *LoginDetails
 	GetUserCoins(username string) *CoinDetails
 	SetupDatabase() error
 }
 
+// initialize new database
 func NewDatabase() (*DatabaseInterface, error) {
 
-	var database DatabaseInterface = &mockDB{}
+	var database DatabaseInterface = &mockDB{} // mockDB is an instance/implementation of a database created
 	// mockDB is a struct that implements the interface
+	//every time new mockDB setup
 
 	var err error = database.SetupDatabase()
 	if err != nil {
