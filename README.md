@@ -17,3 +17,4 @@ Steps to run
 ![alt text](https://github.com/hemanG-G/GO_MINI_PROJECTS/tree/main/images/image.png?raw=true)
    
     
+![screenshot](image.png)
